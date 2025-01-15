@@ -30,7 +30,8 @@ public class View {
                 9 - Delete patient
                 10 - View all patients
                 11 - Filter by diagnose
-                12 - Filter by medikament krankheit""");
+                12 - Filter by medikament krankheit
+                13 - Sort medikaments of patient""");
 
         String option = "-1";
 
@@ -181,6 +182,15 @@ public class View {
                     System.out.println("Krankheit: ");
                     String krankheit = sc.nextLine();
                     controller.filterPatientByKrankheit(krankheit);
+                    break;
+                }
+                case "13": {
+                    System.out.println("Patient ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Modus: ");
+                    String modus = sc.nextLine();
+                    controller.sortMedikamentsOfPatient(controller.readPatienten(id),modus);
                     break;
                 }
             }

@@ -4,7 +4,11 @@ import Model.Medikamente;
 import Model.Patienten;
 import Repository.IRepository;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Controller {
     private IRepository<Medikamente> medikamenteRepository;
@@ -75,6 +79,20 @@ public class Controller {
                     break;
                 }
             }
+        }
+    }
+
+    public void sortMedikamentsOfPatient(Patienten patienten, String modus) {
+        List<Medikamente> medikamentes = patienten.getMedikamentes();
+        List<Medikamente> sortedMedikaments = new ArrayList();
+        if(modus.equals("asc")) {
+            sortedMedikaments = medikamentes.stream().sorted(Comparator.comparing(Medikamente::getPrice)).collect(Collectors.toList());
+        } else if(modus.equals("desc")) {
+            sortedMedikaments = medikamentes.stream().sorted(Comparator.comparing(Medikamente::getPrice)).collect(Collectors.toList()).reversed();
+        }
+
+        for(Medikamente medikamente : sortedMedikaments) {
+            System.out.println(medikamente.getName() + " " + medikamente.getPrice());
         }
     }
 }
