@@ -28,7 +28,8 @@ public class View {
                 7 - Read patient
                 8 - Update patient
                 9 - Delete patient
-                10 - View all patients""");
+                10 - View all patients
+                11 - Filter by diagnose""");
 
         String option = "-1";
 
@@ -167,6 +168,12 @@ public class View {
                     for(Map.Entry<Integer,Patienten> patienten: patients.entrySet()) {
                         System.out.println(patienten.getValue().getName() + " " + patienten.getValue().getAlter() + " " + patienten.getValue().getDiagnose());
                     }
+                    break;
+                }
+                case "11": {
+                    System.out.println("Diagnose: ");
+                    String diagnose = sc.nextLine();
+                    controller.filterPatientByDiagnose(diagnose);
                     break;
                 }
             }

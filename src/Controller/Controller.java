@@ -54,4 +54,14 @@ public class Controller {
     public Map<Integer,Patienten> getPatienten() {
         return patientenRepository.getAll();
     }
+
+    public void filterPatientByDiagnose(String diagnose) {
+        Map<Integer, Patienten> patients = patientenRepository.getAll();
+
+        for(Patienten patienten : patients.values()) {
+            if(patienten.getDiagnose().equals(diagnose)) {
+                System.out.println(patienten.getName());
+            }
+        }
+    }
 }
