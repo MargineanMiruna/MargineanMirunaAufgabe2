@@ -64,4 +64,17 @@ public class Controller {
             }
         }
     }
+
+    public void filterPatientByKrankheit(String krankheit) {
+        Map<Integer, Patienten> patients = patientenRepository.getAll();
+
+        for(Patienten patienten : patients.values()) {
+            for(Medikamente medikamente : patienten.getMedikamentes()) {
+                if(medikamente.getKrankheit().equals(krankheit)) {
+                    System.out.println(patienten.getName());
+                    break;
+                }
+            }
+        }
+    }
 }

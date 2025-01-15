@@ -29,7 +29,8 @@ public class View {
                 8 - Update patient
                 9 - Delete patient
                 10 - View all patients
-                11 - Filter by diagnose""");
+                11 - Filter by diagnose
+                12 - Filter by medikament krankheit""");
 
         String option = "-1";
 
@@ -174,6 +175,12 @@ public class View {
                     System.out.println("Diagnose: ");
                     String diagnose = sc.nextLine();
                     controller.filterPatientByDiagnose(diagnose);
+                    break;
+                }
+                case "12": {
+                    System.out.println("Krankheit: ");
+                    String krankheit = sc.nextLine();
+                    controller.filterPatientByKrankheit(krankheit);
                     break;
                 }
             }
